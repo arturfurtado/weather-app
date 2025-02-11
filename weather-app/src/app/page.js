@@ -1,24 +1,32 @@
 'use client'
-
-import WeatherCard from "@/components/WeatherCards";
-import { useState } from "react";
+import { useState } from 'react';
+import WeatherDashboard from '../components/WeatherDashboard';
+import LocationWeather from '../components/LocationWeather';
 
 export default function Home() {
-  const [city, setCity] = useState("London");
+  const [useLocation, setUseLocation] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl mb-4">Weather App</h1>
-      <div className="mb-6">
-        <input
-          type="text"
-          className="p-2 rounded text-black"
-          placeholder="Enter city name"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
+    <div>
+      <div className="flex justify-center p-4">
+        <button
+          className={`px-4 py-2 mr-2 rounded ${!useLocation ? 'bg-blue-500' : 'bg-gray-700'}`}
+          onClick={() => setUseLocation(false)}
+        >
+          Search City
+        </button>
+        <button
+          className={`px-4 py-2 rounded ${useLocation ? 'bg-blue-500' : 'bg-gray-700'}`}
+          onClick={() => setUseLocation(true)}
+        >
+          Use My Location
+        </button>
       </div>
-      <WeatherCard city={city} />
+      {useLocation ? (
+        <LocationWeather />
+      ) : (
+        <WeatherDashboard initialCity="London" />
+      )}
     </div>
   );
 }

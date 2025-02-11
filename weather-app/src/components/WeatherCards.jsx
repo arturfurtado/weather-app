@@ -30,7 +30,7 @@ export default function WeatherCard({ city }) {
   if (!weather) return null;
 
   return (
-    <div className="bg-gray-800 rounded p-6 shadow-md">
+    <div className="border border-white rounded p-6 shadow-md">
       <h2 className="text-2xl mb-2">{weather.name}</h2>
       <p className="capitalize">{weather.weather[0].description}</p>
       <p className="text-xl">{weather.main.temp} °C</p>
