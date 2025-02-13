@@ -47,10 +47,15 @@ export default function Home() {
       <Header query={query} setQuery={setQuery} searchWeather={searchWeather} />
       {loading && <p>Loading...</p>}
       {city && (
-        <div className="flex w-full">
-          <WeatherCard name={weatherData?.location?.name} country={weatherData?.location?.country} temp={weatherData?.current?.temp_c} humidity={weatherData?.current?.humidity} />
-          <CityMap lat={coords.lat} lon={coords.lon} city={city} />
-        </div>
+        <div className="flex w-full justify-around items-start">
+        <WeatherCard
+          name={weatherData?.location?.name}
+          country={weatherData?.location?.country}
+          temp={weatherData?.current?.temp_c}
+          humidity={weatherData?.current?.humidity}
+        />
+        <CityMap lat={coords.lat} lon={coords.lon} city={city} />
+      </div>
       )}
     </div>
   );

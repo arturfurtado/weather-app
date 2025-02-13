@@ -18,7 +18,7 @@ export default function CityMap({ lat, lon, city }) {
     if (!lat || !lon) return <p>Carregando mapa...</p>;
 
     return (
-        <MapContainer center={[lat, lon]} zoom={13} style={{ height: '400px', width: '100%' }}>
+        <MapContainer center={[lat, lon]} zoom={13} style={{ height: '200px', width: '300px' }}>
             <TileLayer
                 attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
