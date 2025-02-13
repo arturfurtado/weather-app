@@ -1,6 +1,8 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useMap } from 'react-leaflet';
 import { useEffect } from 'react';
+import 'leaflet/dist/leaflet.css';
+
 
 function MapUpdater({ center }) {
     const map = useMap();
@@ -11,7 +13,6 @@ function MapUpdater({ center }) {
     }, [center, map]);
     return null;
 }
-
 
 export default function CityMap({ lat, lon, city }) {
     if (!lat || !lon) return <p>Carregando mapa...</p>;
