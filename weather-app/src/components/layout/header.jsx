@@ -36,21 +36,15 @@ export default function Header({ query, setQuery, searchWeather }) {
 
   return (
     <>
-      <div className="flex justify-between w-full max-w-2xl">
+      <div className="flex w-full justify-between">
         <TodayDate />
-        <div className="flex space-x-3">
-          <ThemeToggle />
-          <TempToggle />
-        </div>
-      </div>
-      <div className="relative w-full max-w-2xl">
         <Input
           type="text"
           placeholder="Enter city name"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="w-full py-4 border border-gray-700 rounded-md focus:outline-none focus:ring-2"
+          className="py-4 max-w-4xl border border-gray-700 rounded-md focus:outline-none focus:ring-2"
         />
         {suggestions.length > 0 && (
           <ul className="absolute top-full left-0 right-0 mt-1 shadow rounded z-10">
@@ -65,6 +59,13 @@ export default function Header({ query, setQuery, searchWeather }) {
             ))}
           </ul>
         )}
+        <div className="flex space-x-3">
+          <ThemeToggle />
+          <TempToggle />
+        </div>
+      </div>
+      <div className="relative w-full max-w-2xl">
+        
       </div>
     </>
   );

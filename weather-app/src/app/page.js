@@ -4,6 +4,8 @@ import { fetchWeatherData, reverseGeocode } from "./lib/weather";
 import CityMap from "@/components/layout/city-map";
 import WeatherCard from "@/components/layout/weather-card";
 import Header from "@/components/layout/header";
+import ForecastChart from "@/components/layout/forecast-chart";
+import FamousCitiesCarousel from "@/components/layout/famous-cities-carousel";
 
 export default function Home() {
   const [query, setQuery] = useState('')
@@ -11,7 +13,7 @@ export default function Home() {
   const [city, setCity] = useState('')
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
-  
+
   async function searchWeather(query) {
     try {
       setLoading(true);
@@ -47,16 +49,21 @@ export default function Home() {
       <Header query={query} setQuery={setQuery} searchWeather={searchWeather} />
       {loading && <p>Loading...</p>}
       {city && (
-        <div className="flex w-full justify-around items-start">
-        <WeatherCard
-          name={weatherData?.location?.name}
-          country={weatherData?.location?.country}
-          temp={weatherData?.current?.temp_c}
-          humidity={weatherData?.current?.humidity}
-        />
-        <CityMap lat={coords.lat} lon={coords.lon} city={city} />
-      </div>
+        <div className="flex w-full items-start">
+          <WeatherCard
+            name={weatherData?.location?.name}
+            country={weatherData?.location?.country}
+            temp={weatherData?.current?.temp_c}
+            humidity={weatherData?.current?.humidity}
+            feelsLike={weatherData.current.feelslike_c}
+          />
+          {/* <CityMap lat={coords.lat} lon={coords.lon} city={city} /> */}
+        </div>
       )}
+      {weatherData?.forecast && weatherData.forecast.forecastday && (
+          <ForecastChart forecastData={weatherData.forecast.forecastday} />
+      )}
+      <FamousCitiesCarousel />
     </div>
   );
 }
