@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 export default function FamousCitiesCarousel() {
   const [citiesWeather, setCitiesWeather] = useState([]);
@@ -38,11 +38,11 @@ export default function FamousCitiesCarousel() {
   }, []);
 
   return (
-    <div className="py-4">
+    <div className="py-4 w-full max-w-screen">
       <h2 className="text-2xl font-bold mb-4 text-center">
         Famous Cities Weather
       </h2>
-      <ScrollArea className="w-full">
+      <ScrollArea className="max-w-screen">
         <div className="flex space-x-4">
           {citiesWeather.map(({ city, data }, idx) => (
             <Card key={idx} className="min-w-[12rem]">
@@ -68,12 +68,10 @@ export default function FamousCitiesCarousel() {
                   <p className="text-sm">Loading...</p>
                 )}
               </CardContent>
-              <CardFooter>
-                {/* You can add extra details here if needed */}
-              </CardFooter>
             </Card>
           ))}
         </div>
+        <ScrollBar orientation="horizontal" />
       </ScrollArea>
     </div>
   );

@@ -49,7 +49,7 @@ export default function Home() {
       <Header query={query} setQuery={setQuery} searchWeather={searchWeather} />
       {loading && <p>Loading...</p>}
       {city && (
-        <div className="flex w-full items-start">
+        <div className="flex w-full justify-around">
           <WeatherCard
             name={weatherData?.location?.name}
             country={weatherData?.location?.country}
@@ -57,11 +57,11 @@ export default function Home() {
             humidity={weatherData?.current?.humidity}
             feelsLike={weatherData.current.feelslike_c}
           />
+          {weatherData?.forecast && weatherData.forecast.forecastday && (
+            <ForecastChart forecastData={weatherData.forecast.forecastday} />
+          )}
           {/* <CityMap lat={coords.lat} lon={coords.lon} city={city} /> */}
         </div>
-      )}
-      {weatherData?.forecast && weatherData.forecast.forecastday && (
-          <ForecastChart forecastData={weatherData.forecast.forecastday} />
       )}
       <FamousCitiesCarousel />
     </div>
