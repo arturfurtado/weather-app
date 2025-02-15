@@ -35,7 +35,7 @@ export default function Header({ query, setQuery, searchWeather }) {
 
   return (
     <>
-      <div className="flex w-full justify-between">
+      <div className="flex flex-col xl:flex-row items-center xl:items-start text-center xl:text-start space-y-3 xl:space-y-0 w-full justify-between">
         <TodayDate />
         <Input
           type="text"

@@ -6,12 +6,15 @@ import Header from "@/components/layout/header";
 import ForecastChart from "@/components/layout/forecast-chart";
 import FamousCitiesCarousel from "@/components/layout/famous-cities-carousel";
 import AstronomicalInfo from "@/components/layout/astro-info";
+import useMobile from "@/hooks/use-mobile";
 
 export default function Home() {
   const [query, setQuery] = useState('');
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
+  
+  const isMobile = useMobile();
 
   async function searchWeather(query) {
     try {
@@ -41,7 +44,7 @@ export default function Home() {
       <Header query={query} setQuery={setQuery} searchWeather={searchWeather} />
       {loading && <p>Loading...</p>}
       {city && (
-        <div className="flex w-full justify-around">
+        <div className={isMobile ? "flex flex-col items-center gap-4" : "flex w-full justify-around"}>
           <WeatherCard  
             name={weatherData?.location?.name}
             country={weatherData?.location?.country}
