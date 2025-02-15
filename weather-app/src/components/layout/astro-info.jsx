@@ -8,11 +8,11 @@ export default function AstronomicalInfo({ forecastData }) {
   if (!forecastData || forecastData.length === 0) return null;
 
   return (
-    <Card className="w-full max-w-lg mt-6">
+    <Card className="w-full max-w-lg">
       <CardHeader>
         <CardTitle>Astronomical Info</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className='h-[300px] overflow-y-auto'>
         <div className="space-y-4">
           {forecastData.map(day => (
             <div

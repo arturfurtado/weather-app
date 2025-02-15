@@ -38,7 +38,7 @@ export default function FamousCitiesCarousel() {
   }, []);
 
   return (
-    <div className="py-4 w-full max-w-screen">
+    <div className="py-4 w-full max-w-screen mt-24">
       <h2 className="text-2xl font-bold mb-4 text-center">
         Famous Cities Weather
       </h2>

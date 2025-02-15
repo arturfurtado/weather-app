@@ -42,7 +42,7 @@ export default function Home() {
       {loading && <p>Loading...</p>}
       {city && (
         <div className="flex w-full justify-around">
-          <WeatherCard
+          <WeatherCard  
             name={weatherData?.location?.name}
             country={weatherData?.location?.country}
             temp={weatherData?.current?.temp_c}

@@ -1,6 +1,5 @@
 import { TodayDate } from "@/app/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
-import { TempToggle } from "./temperature-toggle";
 import { useState, useEffect } from "react";
 import { fetchSuggestions } from "@/app/lib/weather";
 import { Input } from "../ui/input";
@@ -61,7 +60,6 @@ export default function Header({ query, setQuery, searchWeather }) {
         )}
         <div className="flex space-x-3">
           <ThemeToggle />
-          <TempToggle />
         </div>
       </div>
       <div className="relative w-full max-w-2xl">
